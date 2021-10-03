@@ -14,7 +14,12 @@ namespace math
         float data[MATRIX_WIDTH][MATRIX_HEIGHT];
     public:
         matrix();
-
+        
+        void fill(float number);
+        void set(float e00, float e01, float e02, float e03,
+                 float e10, float e11, float e12, float e13,
+                 float e20, float e21, float e22, float e23,
+                 float e30, float e31, float e32, float e33);
         float* get_pointer();
         const float* get_pointer() const;
         void set_identity(float diagonal);

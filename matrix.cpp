@@ -2,6 +2,28 @@
 
 namespace math
 {
+    void matrix::fill(float number)
+    {
+        for(int x = 0; x < MATRIX_WIDTH; x++)
+        {
+            for(int y = 0; y < MATRIX_HEIGHT; y++)
+            {
+                data[x][y] = number;
+            }
+        }
+    }
+
+    void matrix::set(float e00, float e01, float e02, float e03,
+             float e10, float e11, float e12, float e13,
+             float e20, float e21, float e22, float e23,
+             float e30, float e31, float e32, float e33)     
+    {
+        data[0][0] = e00; data[0][1] = e01; data[0][2] = e02; data[0][3] = e03;
+        data[1][0] = e10; data[1][1] = e11; data[1][2] = e12; data[1][3] = e13;
+        data[2][0] = e20; data[2][1] = e21; data[2][2] = e22; data[2][3] = e23;
+        data[3][0] = e30; data[3][1] = e31; data[3][2] = e32; data[3][3] = e33;
+    }
+
     float* matrix::get_pointer()
     {
         return &data[0][0];
