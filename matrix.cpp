@@ -99,14 +99,14 @@ namespace math
         set_element(3, column, vector.get_w());
     }
 
-    vec4 matrix::get_row(int column)
-    {
-        return vec4(get_element(0, column), get_element(1, column), get_element(2, column), get_element(3, column));
-    }
-
-    vec4 matrix::get_column(int row)
+    vec4 matrix::get_row(int row)
     {
         return vec4(get_element(row, 0), get_element(row, 1), get_element(row, 2), get_element(row, 3));
+    }
+
+    vec4 matrix::get_column(int column)
+    {
+        return vec4(get_element(0, column), get_element(1, column), get_element(2, column), get_element(3, column));
     }
 
     float matrix::operator[](int index)
@@ -126,7 +126,10 @@ namespace math
         {
             for(int y = 0; y < MATRIX_HEIGHT; y++)
             {
-                mat.data[x][y] += mat.data[x][y] * other.data[x][y];
+                for(int i = 0; i < 4; i++)
+                {
+                    mat.data[x][y] += mat.data[x][i] * other.data[i][y];
+                }
             }
         }
         return mat;
@@ -189,5 +192,18 @@ namespace math
     void matrix::operator-=(matrix other)
     {
         *this = matrix::operator-(other);
+    }
+
+    bool matrix::equals(matrix other)
+    {
+        bool status = false;
+        for(int x = 0; x < MATRIX_WIDTH; x++)
+        {
+            for(int y = 0; y < MATRIX_HEIGHT; y++)
+            {
+                status = data[x][y] == other.data[x][y];
+            }
+        }
+        return status;
     }
 }

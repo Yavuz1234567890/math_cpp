@@ -43,6 +43,7 @@ namespace math
         void operator/=(matrix other);
         void operator+=(matrix other);
         void operator-=(matrix other);
+        bool equals(matrix other);
     };
 }
 

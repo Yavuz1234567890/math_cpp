@@ -67,6 +67,11 @@ namespace math
             *this = tvec2::operator-(other);
         }
 
+        bool equals(tvec2 other)
+        {
+            return x == other.x && y == other.y;
+        }
+
         const T get_x() const
         {
             return x;
@@ -143,6 +148,11 @@ namespace math
         void operator-=(const tvec3& other)
         {
             *this = tvec3::operator-(other);
+        }
+
+        bool equals(tvec3 other)
+        {
+            return x == other.x && y == other.y && z == other.z;
         }
 
         const T get_x() const
@@ -229,6 +239,11 @@ namespace math
         void operator-=(const tvec4& other)
         {
             *this = tvec4::operator-(other);
+        }
+
+        bool equals(tvec4 other)
+        {
+            return x == other.x && y == other.y && z == other.z && w == other.w;
         }
 
         const T get_x() const
